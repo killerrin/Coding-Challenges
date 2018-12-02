@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>AdventOfCode2018</RootNamespace>
+    <AssemblyName>AdventOfCode2018</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Challenges\Day2\input.txt" />
+    <None Remove="Challenges\Day1\input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Challenges\Day2\input.txt" />
+    <EmbeddedResource Include="Challenges\Day1\input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Killerrin.Toolkit.CMD" Version="1.0.0" />
+    <PackageReference Include="Killerrin.Toolkit.Core" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
