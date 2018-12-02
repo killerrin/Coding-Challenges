@@ -12,6 +12,7 @@ namespace AdventOfCode2018
         {
             AddMenuItem(new SeparatorMenuItem("", '-'));
             AddMenuItem(new Day1Menu());
+            AddMenuItem(new Day2Menu());
         }
 
         public override void Run()
