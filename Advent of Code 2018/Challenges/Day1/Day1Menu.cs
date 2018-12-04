@@ -47,9 +47,9 @@ namespace AdventOfCode2018.Challenges.Day1
         {
             Console.Clear();
 
-            // Begin the Timer
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            // Create a Dictionary of the previously calculated results;
+            // Dictionary<CalculatedFrequency, Object>
+            Dictionary<int, object> frequencies = new Dictionary<int, object>();
 
             // Parse the Inputs to integers
             List<int> parsedInputs = m_input.Select(x =>
@@ -58,11 +58,41 @@ namespace AdventOfCode2018.Challenges.Day1
                 return 0;
             }).ToList();
 
+            // Begin the Timer
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+
             // Calculate the Frequency
-            int currentFrequency = 0;
+            int totalFrequency = 0;
             foreach (var i in parsedInputs)
             {
-                currentFrequency += i;
+                totalFrequency += i;
+            }
+
+            // Calculate the Duplicated Frequency
+            int currentFrequency = 0;
+            int duplicatedFrequency = int.MinValue;
+
+            // Loop until the Duplicated Frequency is found
+            while (duplicatedFrequency == int.MinValue)
+            {
+                // Go through all the inputs
+                for (int i = 0; i < parsedInputs.Count; i++)
+                {
+                    // Calculate the Frequency
+                    currentFrequency += parsedInputs[i];
+
+                    // Check if the Frequency is in our dictionary
+                    if (frequencies.ContainsKey(currentFrequency))
+                    {
+                        // If it is, mark the first duplicate and exit
+                        duplicatedFrequency = currentFrequency;
+                        break;
+                    }
+
+                    // Save the Frequency to the Dictionary
+                    frequencies[currentFrequency] = new object();
+                }
             }
 
             // Stop the watch and calculate the time to run
@@ -70,7 +100,8 @@ namespace AdventOfCode2018.Challenges.Day1
             totalElapsedMilliseconds += stopwatch.ElapsedMilliseconds;
 
             // Print the Result and Exit
-            Console.WriteLine($"The Final Frequency is: {currentFrequency}");
+            Console.WriteLine($"The Final Frequency is: {totalFrequency}");
+            Console.WriteLine($"The Duplicate Frequency is: {duplicatedFrequency}");
             Console.WriteLine($"It took {totalElapsedMilliseconds}ms to run");
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
