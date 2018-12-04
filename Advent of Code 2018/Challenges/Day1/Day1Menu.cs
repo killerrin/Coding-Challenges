@@ -17,11 +17,11 @@ namespace AdventOfCode2018.Challenges.Day1
 
         public Day1Menu() : base("Day1")
         {
-            OnNavigatingTo += Day1Menu_OnNavigatingTo;
-            OnNavigatingFrom += Day1Menu_OnNavigatingFrom;
+            OnNavigatingTo += DayMenu_OnNavigatingTo;
+            OnNavigatingFrom += DayMenu_OnNavigatingFrom;
         }
 
-        private void Day1Menu_OnNavigatingTo(object sender, object e)
+        private void DayMenu_OnNavigatingTo(object sender, object e)
         {
             // Refresh the Milliseconds
             totalElapsedMilliseconds = 0;
@@ -31,14 +31,14 @@ namespace AdventOfCode2018.Challenges.Day1
             stopwatch.Start();
 
             // Get the Inputs
-            var assembly = Assembly.GetAssembly(typeof(Day1Menu));
+            var assembly = Assembly.GetAssembly(typeof(Program));
             m_input = AssemblyFileReader.ReadFile(assembly, @"AdventOfCode2018.Challenges.Day1.input.txt");
 
             // Stop the watch and calculate the time to run
             stopwatch.Stop();
             totalElapsedMilliseconds += stopwatch.ElapsedMilliseconds;
         }
-        private void Day1Menu_OnNavigatingFrom(object sender, object e)
+        private void DayMenu_OnNavigatingFrom(object sender, object e)
         {
             m_input = null;
         }

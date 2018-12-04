@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace AdventOfCode2018.Challenges.Day1
+namespace AdventOfCode2018.Challenges.Day2
 {
     public class Day2Menu : Menu
     {
@@ -17,11 +17,11 @@ namespace AdventOfCode2018.Challenges.Day1
 
         public Day2Menu() : base("Day2")
         {
-            OnNavigatingTo += Day2Menu_OnNavigatingTo;
-            OnNavigatingFrom += Day2Menu_OnNavigatingFrom;
+            OnNavigatingTo += DayMenu_OnNavigatingTo;
+            OnNavigatingFrom += DayMenu_OnNavigatingFrom;
         }
 
-        private void Day2Menu_OnNavigatingTo(object sender, object e)
+        private void DayMenu_OnNavigatingTo(object sender, object e)
         {
             // Refresh the Milliseconds
             totalElapsedMilliseconds = 0;
@@ -31,14 +31,14 @@ namespace AdventOfCode2018.Challenges.Day1
             stopwatch.Start();
 
             // Get the Inputs
-            var assembly = Assembly.GetAssembly(typeof(Day2Menu));
-            m_input = AssemblyFileReader.ReadFile(assembly, @"AdventOfCode2018.Challenges.Day1.input.txt");
+            var assembly = Assembly.GetAssembly(typeof(Program));
+            m_input = AssemblyFileReader.ReadFile(assembly, @"AdventOfCode2018.Challenges.Day2.input.txt");
 
             // Stop the watch and calculate the time to run
             stopwatch.Stop();
             totalElapsedMilliseconds += stopwatch.ElapsedMilliseconds;
         }
-        private void Day2Menu_OnNavigatingFrom(object sender, object e)
+        private void DayMenu_OnNavigatingFrom(object sender, object e)
         {
             m_input = null;
         }
