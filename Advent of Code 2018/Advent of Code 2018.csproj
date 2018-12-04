@@ -8,14 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Challenges\Day2\input.txt" />
     <None Remove="Challenges\Day1\input.txt" />
+    <None Remove="Challenges\Day2\input.txt" />
     <None Remove="Challenges\Day3\input.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Challenges\Day2\input.txt" />
     <EmbeddedResource Include="Challenges\Day1\input.txt" />
+    <EmbeddedResource Include="Challenges\Day2\input.txt" />
     <EmbeddedResource Include="Challenges\Day3\input.txt" />
   </ItemGroup>
 

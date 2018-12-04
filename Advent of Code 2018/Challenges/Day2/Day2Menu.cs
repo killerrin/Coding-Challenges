@@ -51,11 +51,38 @@ namespace AdventOfCode2018.Challenges.Day2
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
+            // Loop through the list of inputs...
+            var totalFoundTwice = 0;
+            var totalFoundThrice = 0;
+            foreach (var input in m_input)
+            {
+                Dictionary<char, int> letterCount = new Dictionary<char, int>();
+                foreach (var character in input)
+                {
+                    if (!letterCount.ContainsKey(character)) letterCount[character] = 0;
+                    letterCount[character]++;
+                }
+
+                bool foundTwice = false;
+                bool foundThrice = false;
+                foreach (var item in letterCount)
+                {
+                    if (item.Value == 2) foundTwice = true;
+                    if (item.Value == 3) foundThrice = true;
+                }
+
+                if (foundTwice) totalFoundTwice++;
+                if (foundThrice) totalFoundThrice++;
+            }
+
+            var checksum = totalFoundTwice * totalFoundThrice;
+
             // Stop the watch and calculate the time to run
             stopwatch.Stop();
             totalElapsedMilliseconds += stopwatch.ElapsedMilliseconds;
 
             // Print the Result and Exit
+            Console.WriteLine($"Found Twice: {totalFoundTwice}; Found Thrice: {totalFoundThrice}; Checksum: {checksum}");
             Console.WriteLine($"It took {totalElapsedMilliseconds}ms to run");
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
