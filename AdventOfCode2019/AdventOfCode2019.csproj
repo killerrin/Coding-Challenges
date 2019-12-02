@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Challenges\D2\input.txt" />
+    <None Remove="Challenges\D1\input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Challenges\D2\input.txt" />
+    <EmbeddedResource Include="Challenges\D1\input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Killerrin.Toolkit.CMD" Version="1.1.0" />
+    <PackageReference Include="Killerrin.Toolkit.Core" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
