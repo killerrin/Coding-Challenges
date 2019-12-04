@@ -29,6 +29,27 @@ namespace AdventOfCode2019.Challenges
             return newInput;
         }
 
+        public static List<List<T>> LoadInput2D<T>(string challenge, char separator)
+        {
+            List<List<T>> newInput = new List<List<T>>();
+
+            var input = LoadInput(challenge);
+            foreach (var line in input)
+            {
+                var inputSplit = line.Split(separator);
+
+                List<T> tmp = new List<T>();
+                foreach (var item in inputSplit)
+                {
+                    var tItem = TypeHelpers.TryParse<T>(item);
+                    tmp.Add(tItem);
+                }
+                newInput.Add(tmp);
+            }
+
+            return newInput;
+        }
+
         public static List<T> LoadSingleLineInput<T>(string challenge, char separator)
         {
             List<T> newInput = new List<T>();
